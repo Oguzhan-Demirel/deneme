@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textile Company Clock Selector</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .clock-selector { display: flex; align-items: center; }
+        .clock { margin-right: 20px; }
+    </style>
+</head>
+<body>
+    <div class="clock-selector">
+        <div class="clock">
+            <h1>Current Time</h1>
+            <div id="time">Loading...</div>
+        </div>
+        <select id="timezone">
+            <option value="UTC">UTC</option>
+            <option value="GMT+1">GMT+1</option>
+            <option value="GMT+2">GMT+2</option>
+            <option value="GMT-1">GMT-1</option>
+            <option value="GMT-2">GMT-2</option>
+        </select>
+    </div>
+    <script>
+        function updateClock() {
+            const timezone = document.getElementById('timezone').value;
+            const date = new Date();
+            let options = { timeZone: timezone, hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const timeString = date.toLocaleTimeString('en-US', options);
+            document.getElementById('time').innerHTML = timeString;
+        }
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
