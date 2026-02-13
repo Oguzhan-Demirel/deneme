@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Clock</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #clock { font-size: 3em; margin: 20px; }
+        .logo { width: 100px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div id="clock"></div>
+    <div>
+        <img src="logo1.png" alt="Logo 1" class="logo">
+        <img src="logo2.png" alt="Logo 2" class="logo">
+        <img src="logo3.png" alt="Logo 3" class="logo">
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const utcDate = now.toUTCString().split(' ')[2] + ' ' + [ now.getUTCMonth() + 1, now.getUTCDate(), now.getUTCFullYear() ].join('-') + ' ' + now.toTimeString().slice(0, 8);
+            document.getElementById('clock').innerText = utcDate;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
